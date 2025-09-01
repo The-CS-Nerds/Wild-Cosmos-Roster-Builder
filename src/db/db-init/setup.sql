@@ -7,6 +7,6 @@ create table if not exists userdata.users (
     username text not null,
     password varchar (255) not null,
     timeCreated timestamptz not null default now()
-)
+);
 
 create index on userdata.users (username, timeCreated);
