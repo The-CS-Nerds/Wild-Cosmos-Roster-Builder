@@ -1,0 +1,34 @@
+site_name: Wild Cosmos Roster Builder
+site_author: SuitablyMysterious
+repo_url: https://github.com/The-CS-Nerds/Wild-Cosmos-Roster-Builder
+repo_name: GitHub
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+docs_dir: documentation/
+
+nav:
+ - Home: index.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - tables
+  - footnotes
+  - md_in_html
+
+plugins:
+  - search
+  - autorefs
+
+extra:
+  social:
+      link: https://github.com/The-CS-Nerds/Wild-Cosmos-Roster-Builder
