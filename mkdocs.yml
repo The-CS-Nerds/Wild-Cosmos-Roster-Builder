@@ -28,7 +28,3 @@ markdown_extensions:
 plugins:
   - search
   - autorefs
-
-extra:
-  social:
-      link: https://github.com/The-CS-Nerds/Wild-Cosmos-Roster-Builder
