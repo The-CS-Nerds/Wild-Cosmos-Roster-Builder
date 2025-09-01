@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    container_name: db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      TZ: ${TZ:-UTC}    # expose to host; drop this in prod if using a private network only
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./src/db/db-init:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  pgdata:
