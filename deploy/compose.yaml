@@ -1,3 +1,4 @@
+name: Wild-Cosmos-Roster-Builder
 services:
   db:
     image: postgres:16
