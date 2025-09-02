@@ -5,6 +5,7 @@ create schema if not exists appdata;
 create table if not exists userdata.users (
     id bigserial primary key,
     username text not null,
+    email text not null,
     password varchar (255) not null,
     timeCreated timestamptz not null default now()
 );
