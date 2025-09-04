@@ -8,9 +8,33 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-app}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-app}
       POSTGRES_DB: ${POSTGRES_DB:-app} 
+    networks:
+      - database
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ../src/db/db-init:/docker-entrypoint-initdb.d:ro
-
+  backend:
+    build:
+      context: ../src/backend
+      dockerfile: DOCKERFILE
+    container_name: backend
+    restart: unless-stopped
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USER: ${POSTGRES_USER:-app}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-app}
+      DATABASE_NAME: ${POSTGRES_DB:-app}
+      PORT: 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - database
+      - frontend
 volumes:
   pgdata:
+networks:
+  database:
+  frontend:
